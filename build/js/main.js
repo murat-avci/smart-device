@@ -3,15 +3,15 @@ const KEYCODE = {
 };
 const link = document.querySelector('.page-header__contacts-button');
 const popup = document.querySelector('.modal');
-const close = popup.querySelector('.modal__close');
+const popupClose = popup.querySelector('.modal__close');
 const form = popup.querySelector('.modal__form');
-const userName = form.querySelector('#username');
-const phone = form.querySelector('#phone');
-const askPhone = form.querySelector("#ask-us-phone");
-const phoneInput = document.querySelectorAll('input[type^="tel"]');
-const message = form.querySelector('#question');
-const isStorageSupport = true;
-const storage = {};
+const userName = popup.querySelector('#username');
+const phone = popup.querySelector('#call-phone');
+const askPhone = document.querySelector("#ask-us-phone");
+const phoneInputs = document.querySelectorAll('input[type^="tel"]');
+const message = document.querySelector('#call-question');
+let isStorageSupport = true;
+let storage = {};
 
 const openPopup = function () {
   popup.classList.add('modal--show');
@@ -35,7 +35,7 @@ link.addEventListener('click', function (evt) {
   evt.preventDefault();
   openPopup();
 
-  if (storage.name === null || storage.name === "") {
+  if (storage.name) {
     userName.value = storage.name;
     phone.value = storage.phone;
     message.value = storage.message;
@@ -45,13 +45,36 @@ link.addEventListener('click', function (evt) {
   }
 });
 
-close.addEventListener('click', function (evt) {
+popupClose.addEventListener('click', function (evt) {
   evt.preventDefault();
   closePopup();
 });
 
+form.addEventListener('submit', function () {
+  if (isStorageSupport) {
+    localStorage.setItem('name', userName.value);
+    localStorage.setItem('phone', phone.value);
+    localStorage.setItem('message', message.value);
+  }
+});
+
+window.addEventListener('keydown', function (evt) {
+  if (evt.key === KEYCODE.esc) {
+    evt.preventDefault();
+    if (popup.classList.contains('modal--show')) {
+      closePopup();
+    }
+  }
+});
+
+popup.addEventListener('click', function (evt) {
+  if (evt.target === popup) {
+    closePopup();
+  }
+});
+
 const getCorrectName = function () {
-  const valueName = inputName.value;
+  const valueName = userName.value;
   const re = /^[a-zA-Zа-яА-Я]*$/;
 
   for (let i = 0; i < valueName.length; i++) {
@@ -153,48 +176,48 @@ InputMask.prototype.isElement = function (element) {
 function mouse (inputs) {
   inputs.forEach (input => {
     input.addEventListener("focus", function () {
-      input.value = "+7_ (___) ___-__-__";
+      input.placeholder = "+7_ (___) ___-__-__";
     })
 
     input.addEventListener("mouseover", function () {
-      input.value = "+7_ (___) ___-__-__";
+      input.placeholder = "+7_ (___) ___-__-__";
     })
 
     input.addEventListener("mouseout", function () {
-      input.value = "";
+      input.placeholder = "Телефон";
     })
   })
 }
 
-mouse(phoneInput);
+mouse(phoneInputs);
 
 const accordionItems = document.querySelectorAll('.accordion');
-  const accordionPanes = document.querySelectorAll('.accordion__pane');
+const accordionPanes = document.querySelectorAll('.accordion__pane');
 
-  const hidePane = function (button, pane) {
-    button.classList.add('accordion__toggle--inactive');
-    pane.classList.add('accordion__pane--hidden');
-  };
+const hidePane = function (button, pane) {
+  button.classList.add('accordion__toggle--inactive');
+  pane.classList.add('accordion__pane--hidden');
+};
 
-  const showPane = function (button, pane) {
-    button.classList.remove('accordion__toggle--inactive');
-    pane.classList.remove('accordion__pane--hidden');
-  };
+const showPane = function (button, pane) {
+  button.classList.remove('accordion__toggle--inactive');
+  pane.classList.remove('accordion__pane--hidden');
+};
 
-  const toggleAccordion = function (evt) {
-    Array.prototype.forEach.call(accordionPanes, function (accordionPane) {
-      const button = accordionPane.closest('.accordion').querySelector('.accordion__toggle');
-      if (button === evt.target && !button.classList.contains('accordion__toggle--inactive') || button !== evt.target) {
-        hidePane(button, accordionPane);
-      } else if (button === evt.target) {
-        showPane(button, accordionPane);
-      }
-    });
-  };
-
-  Array.prototype.forEach.call(accordionItems, function (accordion) {
-    const accordionToggleButton = accordion.querySelector('.accordion__toggle');
-    const accordionPane = accordion.querySelector('.accordion__pane');
-    hidePane(accordionToggleButton, accordionPane);
-    accordionToggleButton.addEventListener('click', toggleAccordion);
+const toggleAccordion = function (evt) {
+  Array.prototype.forEach.call(accordionPanes, function (accordionPane) {
+    const button = accordionPane.closest('.accordion').querySelector('.accordion__toggle');
+    if (button === evt.target && !button.classList.contains('accordion__toggle--inactive') || button !== evt.target) {
+      hidePane(button, accordionPane);
+    } else if (button === evt.target) {
+      showPane(button, accordionPane);
+    }
   });
+};
+
+Array.prototype.forEach.call(accordionItems, function (accordion) {
+  const accordionToggleButton = accordion.querySelector('.accordion__toggle');
+  const accordionPane = accordion.querySelector('.accordion__pane');
+  hidePane(accordionToggleButton, accordionPane);
+  accordionToggleButton.addEventListener('click', toggleAccordion);
+});
