@@ -20,10 +20,12 @@
 
 .nav__list {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: start;
   margin: 0;
   padding: 0;
+  max-height: 100px;
 }
 
 .nav__item {
@@ -48,6 +50,14 @@
   }
 }
 
+@media (max-width: $tablet-width) {
+  .nav__list {
+    flex-wrap: nowrap;
+    min-height: 175px;
+    height: auto;
+  }
+}
+
 @media (max-width: $mobile-width) {
   .nav__heading-block {
     display: flex;
@@ -64,5 +74,7 @@
     padding-right: 15px;
     padding-bottom: 26px;
     padding-left: 15px;
+    min-height: 210px;
+    height: auto;
   }
 }

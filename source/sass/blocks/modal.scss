@@ -44,6 +44,12 @@
   display: flex;
   flex-direction: column;
 
+  input:active,
+  input:focus {
+    opacity: 0.5;
+    outline: none;
+  }
+
   input[type="text"],
   input[type="tel"],
   textarea {
@@ -54,10 +60,19 @@
     padding-left: 23px;
   }
 
+  input[placeholder="Телефон"] {
+    color: $white;
+    opacity: 0.8;
+  }
+
   textarea {
     height: 104px;
     padding-top: 13px;
     resize: none;
+  }
+
+  textarea::placeholder {
+    opacity: 0.8;
   }
 
   button {
@@ -127,6 +142,10 @@
 .modal--show {
   display: flex;
   animation: fade-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.modal--error {
+  animation: popup-shake 0.6s;
 }
 
 @keyframes fade-in {

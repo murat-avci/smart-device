@@ -1,21 +1,21 @@
 "use strict";
 
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var sourcemap = require("gulp-sourcemaps");
-var sass = require("gulp-sass");
-var postcss = require("gulp-postcss");
-var autoprefixer = require("autoprefixer");
-var server = require("browser-sync").create();
-var csso = require("gulp-csso");
-var rename = require("gulp-rename");
-var imagemin = require("gulp-imagemin");
-var webp = require("gulp-webp");
-var svgstore = require("gulp-svgstore")
-var posthtml = require("gulp-posthtml");
-var include = require("posthtml-include");
-var concat = require("gulp-concat");
-var del = require("del");
+const gulp = require("gulp");
+const plumber = require("gulp-plumber");
+const sourcemap = require("gulp-sourcemaps");
+const sass = require("gulp-sass");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+const server = require("browser-sync").create();
+const csso = require("gulp-csso");
+const rename = require("gulp-rename");
+const imagemin = require("gulp-imagemin");
+const webp = require("gulp-webp");
+const svgstore = require("gulp-svgstore")
+const posthtml = require("gulp-posthtml");
+const include = require("posthtml-include");
+const concat = require("gulp-concat");
+const del = require("del");
 
 gulp.task("css", function () {
   return gulp.src("source/sass/style.scss")
@@ -42,6 +42,7 @@ gulp.task("server", function () {
   gulp.watch("source/sass/**/*.{scss,sass}", gulp.series("css"));
   gulp.watch("source/img/icon-*.svg", gulp.series("sprite", "html", "refresh"));
   gulp.watch("source/*.html", gulp.series("html", "refresh"));
+  gulp.watch("source/js/index.js", gulp.series("scripts", "concat-js-vendor", "refresh"));
 });
 
 gulp.task("refresh", function (done) {
@@ -86,7 +87,7 @@ gulp.task("copy", function () {
   return gulp.src([
     "source/fonts/**/*.{woff,woff2}",
     "source/img/**",
-    // "source/js/**",
+    "source/js/main.js",
     "source//*.ico"
     ], {
       base: "source"
@@ -98,10 +99,9 @@ gulp.task("clean", function () {
   return del("build");
 });
 
-gulp.task('concat-js-main', function () {
-  return gulp.src('source/js/main-*.js')
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('build/js'));
+gulp.task("scripts", function() {
+  return gulp.src("source/js/main.js")
+    .pipe(gulp.dest("build/js"));
 });
 
 gulp.task('concat-js-vendor', function () {
@@ -110,5 +110,5 @@ gulp.task('concat-js-vendor', function () {
     .pipe(gulp.dest('build/js'));
 });
 
-gulp.task("build", gulp.series("clean", "copy", "css", "sprite", "html", "concat-js-main", "concat-js-vendor"));
+gulp.task("build", gulp.series("clean", "copy", "css", "sprite", "html", "scripts", "concat-js-vendor"));
 gulp.task("start", gulp.series("build", "server"));
