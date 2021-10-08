@@ -18,12 +18,14 @@
       <div class="page-header__wrapper wrapper">
         <h1 class="visually-hidden">Smart Device - Умные технологии</h1>
         <a class="page-header__logo-link">
-          <svg class="page-header__logo page-header__logo--desktop" width="202" height="52">
-            <use xlink:href="img/sprite_auto.svg#logo-smart-device"></use>
-          </svg>
-          <svg class="page-header__logo page-header__logo--mobile" width="38" height="38">
-            <use xlink:href="img/sprite_auto.svg#logo-smart-device-mobile"></use>
-          </svg>
+          <picture>
+            <source type="image/webp" media="(max-width: 767px)" srcset="img/logo-header-mobile@1x.webp 1x, img/logo-header-mobile@2x.webp 2x">
+            <source type="image/webp" media="(min-width: 1024px)" srcset="img/logo-header-desktop@1x.webp 1x, img/logo-header-desktop@2x.webp 2x">
+            <!-- 1х: 38px; 2x: 76px -->
+            <source media="(max-width: 767px)" srcset="img/logo-header-mobile@1x.png 1x, img/logo-header-mobile@2x.png 2x">
+            <!-- 1х: 202px; 2x: 404px -->
+            <img src="img/logo-header-desktop@1x.png" srcset="img/logo-header-desktop@2x.png 2x" width="202" height="52" loading="lazy" alt="Logo Smart Device">
+          </picture>
         </a>
         <ul class="page-header__contacts-list">
           <li class="page-header__contacts-item page-header__contacts-item--mail">
@@ -193,9 +195,7 @@
       <div class="page-footer__wrapper wrapper">
         <div class="page-footer__base">
           <a class="page-footer__logo-link">
-            <svg class="page-footer__logo page-footer__logo--desktop" width="226" height="52">
-              <use xlink:href="img/sprite_auto.svg#logo-service-device"></use>
-            </svg>
+            <img src="img/logo-footer-desktop@1x.png" srcset="img/logo-footer-desktop@2x.png 2x" width="216" height="52" loading="lazy" alt="Logo Service Device">
           </a>
           <b class="page-footer__years-of-service">1999-2018 SD Service Devices</b>
           <ul class="page-footer__social social">

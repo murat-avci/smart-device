@@ -155,8 +155,14 @@
 
 @media (max-width: $mobile-width) {
   .page-header__logo-link {
+    position: relative;
     width: 38px;
     height: 38px;
+
+    img {
+      width: auto;
+      height: auto;
+    }
   }
 
   .page-header__logo--desktop {
