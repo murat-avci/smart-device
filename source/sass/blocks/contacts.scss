@@ -59,6 +59,7 @@
 
 @media (max-width: $mobile-width) {
   .contacts__heading-block {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;

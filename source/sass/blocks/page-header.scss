@@ -15,15 +15,6 @@
   display: block;
   width: 202px;
   height: 52px;
-
-  &:hover,
-  &:focus {
-    opacity: 0.6;
-  }
-
-  &:active {
-    opacity: 0.3;
-  }
 }
 
 .page-header__logo--mobile {

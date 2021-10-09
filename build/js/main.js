@@ -199,6 +199,7 @@ mouse(phoneInputs);
 
 const accordionItems = document.querySelectorAll(".accordion");
 const accordionPanes = document.querySelectorAll(".accordion__pane");
+const headingNav = document.querySelector(".nav__heading-block");
 
 const hidePane = function (button, pane) {
   button.classList.add("accordion__toggle--inactive");

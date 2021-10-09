@@ -10,9 +10,12 @@
   background-size: 671px 641px, cover;
 
   img {
+    display: block;
     position: absolute;
+    width: auto;
+    height: auto;
     top: 258px;
-    right: calc((177 / 1920) * 100%);
+    left: calc(50% + 78px);
     object-fit: cover;
   }
 
@@ -115,7 +118,7 @@
 
     img {
       top: 113px;
-      left: calc((297 / 768) * 100%);
+      left: calc((510 / 768) * 100%);
     }
 
     @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -178,11 +181,11 @@
       url("../img/bg-header-mobile@1x.png");
     background-repeat: no-repeat;
     background-position: calc(55% + 254px) 7px, center top;
-    background-size: auto, 506px 430px, cover;
+    background-size: 506px 430px, cover;
 
     img {
       top: 92px;
-      left: calc((26 / 320) * 100%);
+      left: 8%;
     }
 
     @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
@@ -222,7 +225,7 @@
     margin: 0 auto;
 
     &::after {
-      content: "Получить бесплатную консультацию";
+      content: "Бесплатная консультация";
     }
   }
 

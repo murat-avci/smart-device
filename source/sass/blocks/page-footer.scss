@@ -1,5 +1,8 @@
 .page-footer {
   background-color: $footer-bg;
+  margin-top: auto;
+  margin-bottom: auto;
+
 }
 
 .page-footer__wrapper {
@@ -23,15 +26,6 @@
   height: 52px;
   margin-bottom: 54px;
   margin-left: -5px;
-
-  &:hover,
-  &:focus {
-    opacity: 0.6;
-  }
-
-  &:active {
-    opacity: 0.3;
-  }
 }
 
 .page-footer__years-of-service {
@@ -45,6 +39,7 @@
 .page-footer__nav {
   flex-shrink: 5;
   width: 558px;
+  height: auto;
   margin: 0;
   padding: 0;
 }
