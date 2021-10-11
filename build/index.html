@@ -42,17 +42,6 @@
     </header>
     <main class="page-main">
       <section class="intro">
-        <picture>
-          <source type="image/webp" media="(max-width: 767px)" srcset="img/bg-header-board-mobile@1x.webp 1x, img/bg-header-board-mobile@2x.webp 2x">
-          <source type="image/webp" media="(max-width: 1023px)" srcset="img/bg-header-board-tablet@1x.webp 1x, img/bg-header-board-tablet@2x.webp 2x">
-          <source type="image/webp" media="(min-width: 1024px)" srcset="img/bg-header-board-desktop@1x.webp 1x, img/bg-header-board-desktop@2x.webp 2x">
-          <!-- 1х: 301px; 2x: 602px -->
-          <source media="(max-width: 767px)" srcset="img/bg-header-board-mobile@1x.png 1x, img/bg-header-board-mobile@2x.png 2x">
-          <!-- 1х: 465px; 2x: 930px -->
-          <source media="(max-width: 1023px)" srcset="img/bg-header-board-tablet@1x.png 1x, img/bg-header-board-tablet@2x.png 2x">
-          <!-- 1х: 705px; 2x: 1410px -->
-          <img src="img/bg-header-board-desktop@1x.png" srcset="img/bg-header-board-desktop@2x.png 2x" width="705" height="515" loading="lazy" alt="Печатные Платы">
-        </picture>
         <div class="intro__wrapper wrapper">
           <h2>Печатные платы</h2>
           <p>производство и монтаж, поставка комплектующих, блоков и модулей</p>
@@ -98,7 +87,7 @@
             </li>
           </ul>
         </section>
-        <section class="about-us wrapper">
+        <section class="about-us wrapper" id="about-us">
           <h2 class="about-us__header">О компании</h2>
           <p class="about-us__text">Мы поставляем электронные комплектующие, производим печатные платы и предоставляем
             мировые технологии с 1997 года. Выполняем срочные заказы и пилотные образцы до 10 дней.
@@ -110,7 +99,7 @@
           <a href="#" class="about-us__button button">Подробнее</a>
         </section>
       </div>
-      <section class="products">
+      <section class="products" id="products">
         <div class="products__wrapper wrapper">
           <h2 class="products__header">Service Device предлагает следующие товары и услуги</h2>
           <ul class="products__list">
@@ -215,19 +204,19 @@
           </div>
           <ul class="nav__list accordion__pane">
             <div class="nav__list-wrapper">
-              <li class="nav__item"><a href="#" class="nav__link">О компании</a> </li>
-              <li class="nav__item"><a href="#" class="nav__link">Продукты</a></li>
+              <li class="nav__item"><a href="#about-us" class="nav__link">О компании</a> </li>
+              <li class="nav__item"><a href="#products" class="nav__link">Продукты</a></li>
               <li class="nav__item"><a href="#" class="nav__link">Производство печатных плат</a></li>
               <li class="nav__item"><a href="#" class="nav__link">Монтаж печатных плат</a></li>
             </div>
             <div class="nav__list-wrapper">
               <li class="nav__item"><a href="#" class="nav__link">Комплектующие</a></li>
               <li class="nav__item"><a href="#" class="nav__link">Доставка</a></li>
-              <li class="nav__item"><a href="#" class="nav__link">Контакты</a></li>
+              <li class="nav__item"><a href="#contacts" class="nav__link">Контакты</a></li>
             </div>
           </ul>
         </div>
-        <div class="page-footer__contacts contacts accordion">
+        <div class="page-footer__contacts contacts accordion" id="contacts">
           <div class="contacts__heading-block">
             <h2 class="contacts__header">Наш офис</h2>
             <button class="contacts__toggle accordion__toggle" type="button"><span class="visually-hidden">Показать/Спрятать контактную информацию</span></button>
